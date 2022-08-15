@@ -44,9 +44,9 @@ async def new_post(client: Client, message: Message):
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     text = f"{link}"
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(" URL", url=f'{link}')]])
+    buttons = InlineKeyboardMarkup([[InlineKeyboardButton(" URL", url=f'{link}')]])
     try:
-        await message.edit_reply_markup(reply_markup)
+        await m.edit_caption(f"{m.caption}\n\n{text}", reply_markup=InlineKeyboardMarkup(buttons))
     except Exception as e:
         print(e)
         pass
