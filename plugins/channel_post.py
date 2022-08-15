@@ -46,7 +46,7 @@ async def new_post(client: Client, message: Message):
     text = f"{link}"
     buttons = InlineKeyboardMarkup([[InlineKeyboardButton(" URL", url=f'{link}')]])
     try:
-        await m.edit_caption(f"{m.caption}\n\n{text}", reply_markup=InlineKeyboardMarkup(buttons))
+        await m.edit_caption(f"{caption}\n\n{text}", reply_markup=buttons)
     except Exception as e:
         print(e)
         pass
